@@ -1,0 +1,212 @@
+[gd_scene format=3 uid="uid://wi3sslptg726"]
+
+[ext_resource type="Script" uid="uid://c288bxrqyqcow" path="res://scripts/hud.gd" id="1_qpvh6"]
+
+[sub_resource type="GDScript" id="GDScript_fls4u"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="HUD" type="CanvasLayer" unique_id=1244993657]
+script = ExtResource("1_qpvh6")
+
+[node name="RootUI" type="Control" parent="." unique_id=1870955251]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopCenter" type="VBoxContainer" parent="RootUI" unique_id=981281783]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="ClockLabel" type="Label" parent="RootUI/TopCenter" unique_id=1002745038]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "03:00"
+horizontal_alignment = 1
+
+[node name="TopRight" type="VBoxContainer" parent="RootUI" unique_id=988577080]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 112.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="OutpostLabel" type="Label" parent="RootUI/TopRight" unique_id=1385346815]
+unique_name_in_owner = true
+layout_mode = 2
+text = "RED OUTPOST"
+
+[node name="OutpostHP" type="ProgressBar" parent="RootUI/TopRight" unique_id=230099225]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="BaseLabel" type="Label" parent="RootUI/TopRight" unique_id=1702300422]
+unique_name_in_owner = true
+layout_mode = 2
+text = "RED BASE"
+
+[node name="BaseHP" type="ProgressBar" parent="RootUI/TopRight" unique_id=1313616938]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="BottomLeft" type="Control" parent="RootUI" unique_id=1185733114]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -248.0
+offset_right = 220.0
+offset_bottom = -48.0
+grow_vertical = 0
+
+[node name="MapBg" type="ColorRect" parent="RootUI/BottomLeft" unique_id=514896904]
+self_modulate = Color(1, 1, 1, 0.6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.24705882, 0.25490198, 1)
+
+[node name="MinimapArea" type="Control" parent="RootUI/BottomLeft" unique_id=1201525892]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon_Player" type="ColorRect" parent="RootUI/BottomLeft/MinimapArea" unique_id=2073443318]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.7219373, 0.9812049, 0.4153536, 1)
+
+[node name="ColorRect" type="ColorRect" parent="RootUI/BottomLeft/MinimapArea/Icon_Player" unique_id=1555168931]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -6.0
+offset_right = 9.0
+offset_bottom = 2.0
+color = Color(0.72156864, 0.98039216, 0.41568628, 1)
+
+[node name="BottomRight" type="VBoxContainer" parent="RootUI" unique_id=416560140]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -166.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="PlayerInfoLabel" type="Label" parent="RootUI/BottomRight" unique_id=724969149]
+unique_name_in_owner = true
+layout_mode = 2
+text = "INFANTRY"
+
+[node name="HPLabel" type="Label" parent="RootUI/BottomRight" unique_id=2070713213]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP"
+
+[node name="HPBar" type="ProgressBar" parent="RootUI/BottomRight" unique_id=145835811]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="HeatLabel" type="Label" parent="RootUI/BottomRight" unique_id=1468831668]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HEAT"
+
+[node name="HeatBar" type="ProgressBar" parent="RootUI/BottomRight" unique_id=481916884]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomText" type="HBoxContainer" parent="RootUI/BottomRight" unique_id=725249994]
+layout_mode = 2
+
+[node name="AmmoLabel" type="Label" parent="RootUI/BottomRight/BottomText" unique_id=1182245035]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ammo:150"
+
+[node name="HitLabel" type="Label" parent="RootUI/BottomRight/BottomText" unique_id=321930451]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hits:0"
+
+[node name="BottomCenter" type="HBoxContainer" parent="RootUI" unique_id=1570631235]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HintLabel" type="Label" parent="RootUI/BottomCenter" unique_id=158382411]
+layout_mode = 2
+text = "WASD 移动 SPACE 跳跃 鼠标左键 开火 "
+script = SubResource("GDScript_fls4u")
+
+[node name="Crosshair" type="Control" parent="RootUI" unique_id=1037569372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Line_H" type="ColorRect" parent="RootUI/Crosshair" unique_id=1326105615]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 30.0
+offset_bottom = 17.0
+mouse_filter = 2
+
+[node name="Line_V" type="ColorRect" parent="RootUI/Crosshair" unique_id=1464890363]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 17.0
+offset_bottom = 30.0
+mouse_filter = 2

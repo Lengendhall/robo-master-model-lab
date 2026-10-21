@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://drepqjy3c2tqh"]
+
+[ext_resource type="Script" uid="uid://cnj5ojanujpmq" path="res://scripts/main.gd" id="1_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://ctdpwgc2lgapl" path="res://scenes/Outpost.tscn" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://wi3sslptg726" path="res://scenes/HUD.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://boynftfkndrvf" path="res://scenes/Infantry.tscn" id="5_c01mt"]
+[ext_resource type="PackedScene" uid="uid://tesyreo5mjfo" path="res://scenes/Base.tscn" id="5_vcsgt"]
+[ext_resource type="Script" uid="uid://b4ot4c6x0i06c" path="res://scripts/command_receiver.gd" id="6_c01mt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3wts5"]
+size = Vector3(40, 0.2, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcsgt"]
+albedo_color = Color(0.16078432, 0.1764706, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wts5"]
+size = Vector3(40, 0.2, 40)
+
+[sub_resource type="Environment" id="Environment_3wts5"]
+background_mode = 1
+background_color = Color(0.09239701, 0.09239709, 0.09239703, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.14509805, 0.16862746, 0.20784314, 1)
+ambient_light_energy = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyn7b"]
+size = Vector3(40, 40, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcsgt"]
+size = Vector3(40, 40, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c01mt"]
+size = Vector3(0.5, 40, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxtc6"]
+size = Vector3(0.5, 40, 40)
+
+[node name="Main" type="Node3D" unique_id=930110596]
+script = ExtResource("1_0bbpv")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=744744502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+collision_mask = 0
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=1048262342]
+mesh = SubResource("BoxMesh_3wts5")
+surface_material_override/0 = SubResource("StandardMaterial3D_vcsgt")
+
+[node name="GroundCollision" type="CollisionShape3D" parent="Ground" unique_id=130826018]
+shape = SubResource("BoxShape3D_3wts5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=665717997]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="HUD" parent="." unique_id=1244993657 instance=ExtResource("4_rarhs")]
+
+[node name="Outpost" parent="." unique_id=1356303404 instance=ExtResource("2_rvslj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.42, 0)
+
+[node name="Base" parent="." unique_id=1287580252 instance=ExtResource("5_vcsgt")]
+
+[node name="Infantry" parent="." unique_id=580885428 instance=ExtResource("5_c01mt")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=101874577]
+environment = SubResource("Environment_3wts5")
+
+[node name="AirWall" type="StaticBody3D" parent="." unique_id=1989731043]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AirWall" unique_id=1205261747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+shape = SubResource("BoxShape3D_iyn7b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AirWall" unique_id=672135996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+shape = SubResource("BoxShape3D_vcsgt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AirWall" unique_id=689266374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+shape = SubResource("BoxShape3D_c01mt")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="AirWall" unique_id=618540878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+shape = SubResource("BoxShape3D_nxtc6")
+
+[node name="CommandReceiver" type="Node" parent="." unique_id=932120190]
+script = ExtResource("6_c01mt")
