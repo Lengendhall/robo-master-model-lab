@@ -8,9 +8,8 @@ var tcp_client: StreamPeerTCP = StreamPeerTCP.new()
 var is_connected: bool = false
 var frame_seq: int = 0
 
-@export var send_rate: float = 60.0asda
+@export var send_rate: float = 60.0
 var time_accumulator: float = 0.0
-
 
 func _ready() -> void:
 	var err = tcp_client.connect_to_host("127.0.0.1", 9000)
